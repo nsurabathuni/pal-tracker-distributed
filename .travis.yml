@@ -51,7 +51,7 @@ jobs:
         organization: $CF_ORG
         space: $CF_SPACE
     - stage: deploy
-      language: bash
+      language: java
       script:
         - echo "Downloading backlog server $RELEASE_TAG"
         - wget -P applications/backlog-server/build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-distributed/releases/download/$RELEASE_TAG/backlog-server.jar
@@ -61,7 +61,7 @@ jobs:
       deploy:
         <<: *cloudfoundry
     - stage: deploy
-      language: bash
+      language: java
       script:
         - echo "Downloading registration server $RELEASE_TAG"
         - wget -P applications/registration-server/build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-distributed/releases/download/$RELEASE_TAG/registration-server.jar
@@ -71,7 +71,7 @@ jobs:
       deploy:
         <<: *cloudfoundry
     - stage: deploy
-      language: bash
+      language: java
       script:
         - echo "Downloading timesheets server $RELEASE_TAG"
         - wget -P applications/timesheets-server/build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-distributed/releases/download/$RELEASE_TAG/timesheets-server.jar
